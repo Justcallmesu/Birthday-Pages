@@ -24,6 +24,7 @@ const eventsList = ["mouseover",
 let counter = 0;
 
 window.addEventListener("load", function () {
+    var context = new AudioContext();
     element.paragraph.innerText = message[counter];
     const promise = element.player.play();
     promise.then(function () {

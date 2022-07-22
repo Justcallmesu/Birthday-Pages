@@ -234,8 +234,12 @@ body {
   .card:hover > .cover {
     transform: rotateY(-150deg);
   }
+  .card:hover .cake-base {
+    transform: rotateY(-150deg);
+  }
 
   .cake-base {
+    transition: 3s all;
     transform: scale(1.3);
   }
 }
