@@ -10,6 +10,7 @@ const element = {
     paragraph: document.querySelector(".Content"),
     button: document.querySelector(".eventEmitter"),
     container: document.querySelector(".button-container"),
+    player: document.querySelector(".song"),
     randomPosition: null
 }
 
@@ -24,6 +25,10 @@ let counter = 0;
 
 window.addEventListener("load", function () {
     element.paragraph.innerText = message[counter];
+    const promise = element.player.play();
+    promise.then(function () {
+        element.player.muted = false;
+    });
 })
 
 function createButton() {
