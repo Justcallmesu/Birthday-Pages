@@ -13,6 +13,13 @@ const element = {
     randomPosition: null
 }
 
+const eventsList = ["mouseover",
+    "mousemove",
+    "touchmove",
+    "touchstart",
+    "touchend"
+];
+
 let counter = 0;
 
 window.addEventListener("load", function () {
@@ -36,7 +43,16 @@ function moveButton() {
     const styling = element.randomPosition.style;
     styling.left = Math.floor(Math.random() * elementDimension.width) + 1 + "px";
     styling.top = Math.floor(Math.random() * elementDimension.height) + 1 + "px";
-    console.log(styling.left, styling.top)
+}
+
+function createEventListener() {
+    for (const event of eventsList) {
+        element.container.addEventListener(`${event}`, function (event) {
+            if (event.target.classList.contains("randomPosition")) {
+                moveButton();
+            }
+        })
+    }
 }
 
 element.container.addEventListener("click", function (event) {
@@ -46,6 +62,7 @@ element.container.addEventListener("click", function (event) {
             if (counter === 4) {
                 element.button.innerText = "Gak usah";
                 createButton();
+                createEventListener();
             };
 
             if (counter === 5) {
@@ -56,36 +73,6 @@ element.container.addEventListener("click", function (event) {
         }
         return;
     }
-    if (event.target.classList.contains("randomPosition")) {
-        moveButton();
-    }
-})
-
-element.container.addEventListener("mouseover", function (event) {
-    if (event.target.classList.contains("randomPosition")) {
-        moveButton()
-    }
-});
-
-element.container.addEventListener("mousemove", function (event) {
-    if (event.target.classList.contains("randomPosition")) {
-        moveButton();
-    }
-})
-
-element.container.addEventListener("touchmove", function (event) {
-    if (event.target.classList.contains("randomPosition")) {
-        moveButton();
-    }
-})
-
-element.container.addEventListener("touchstart", function (event) {
-    if (event.target.classList.contains("randomPosition")) {
-        moveButton();
-    }
-})
-
-element.container.addEventListener("touchend", function (event) {
     if (event.target.classList.contains("randomPosition")) {
         moveButton();
     }
