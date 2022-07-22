@@ -73,4 +73,20 @@ element.container.addEventListener("mousemove", function (event) {
     }
 })
 
+element.container.addEventListener("touchmove", function (event) {
+    if (event.target.classList.contains("randomPosition")) {
+        moveButton();
+    }
+})
 
+element.container.addEventListener("touchstart", function (event) {
+    if (event.target.classList.contains("randomPosition")) {
+        moveButton();
+    }
+})
+
+element.container.addEventListener("touchend", function (event) {
+    if (event.target.classList.contains("randomPosition")) {
+        moveButton();
+    }
+})
