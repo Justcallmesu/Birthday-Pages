@@ -51,14 +51,23 @@ element.container.addEventListener("click", function (event) {
             if (counter === 5) {
                 element.randomPosition.remove();
                 element.button.innerText = "Okayy"
-                setTimeout(function () {
-                    location.href = "https://www.youtube.com/watch?v=n3qw7lZzbkM"
-                }, 2000)
             }
             element.paragraph.innerText = message[counter];
         }
         return;
     }
+    if (event.target.classList.contains("randomPosition")) {
+        moveButton();
+    }
+})
+
+element.container.addEventListener("mouseover", function (event) {
+    if (event.target.classList.contains("randomPosition")) {
+        moveButton()
+    }
+});
+
+element.container.addEventListener("mousemove", function (event) {
     if (event.target.classList.contains("randomPosition")) {
         moveButton();
     }
