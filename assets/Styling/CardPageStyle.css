@@ -94,6 +94,7 @@ body {
   width: 17.5rem;
   position: absolute;
   transform: scale(0.9);
+  backface-visibility: hidden;
 }
 
 .cake {
