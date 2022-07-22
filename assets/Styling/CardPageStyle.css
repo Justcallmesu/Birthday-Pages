@@ -83,8 +83,13 @@ body {
   transform: rotateX(150deg);
 }
 
+.card:hover .cake-base {
+  transform: rotateX(150deg);
+}
+
 /* Cake */
 .cake-base {
+  transition: 2s all;
   margin: auto;
   top: 30px;
   left: 0;
