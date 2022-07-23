@@ -1,10 +1,10 @@
 const message = [
-    "Halooo Raisa 🤮",
-    "Selamat ulang tahun, cieee🥺",
-    "Semoga jadi pribadi yg lebih baik, lebih sabar, lebih teliti, lebih teratur dan lebih bersih lagi hehe",
-    "Jangan kebanyakan ngegym nanti klo jadi cantik lalu punya pacar jd susah diajak nongki 😭",
-    "Hmmm btw mau kado sama kue apa ?",
-    "Oh gak usah, yauda gpp Ditunggu ya traktirannya 🥰"
+    "Halooo Sarah Michelle <br/> (HRD tercinta GMM) <br/> 25 Juli 2022",
+    "Happy Birthday ya, cieee tua🥺",
+    "Semoga jadi pribadi yg lebih baik <br/> lebih sabar <br/> lebih teliti <br/> lebih teratur <br/> yang paling penting lebih bersih lagi hehe",
+    "Jangan keseringan lupa <br/>jangan suka menghayal jadi istri jungkook <br/> jangan kebanyakan ngegym nanti klo jadi cantik lalu punya pacar jd susah diajak nongki 😭",
+    "Hmmm btw mau kado sama kue apa?",
+    "Oh gak usah, yauda gpp. <br/> Ditunggu ya traktirannya <br/> Jangan Lupa Chumchurumnya HAHAHA 🥰"
 ];
 const element = {
     paragraph: document.querySelector(".Content"),
@@ -28,7 +28,7 @@ let counter = 0;
 let created = false;
 
 window.addEventListener("load", function () {
-    element.paragraph.innerText = message[counter];
+    element.paragraph.innerHTML = message[counter];
     const promise = element.player.play();
     promise.then(function () {
         element.player.muted = false;
@@ -136,7 +136,7 @@ const selfDestruct = element.container.addEventListener("click", function (event
                 element.randomPosition.remove();
                 element.button.innerText = "Okayy"
             }
-            element.paragraph.innerText = message[counter];
+            element.paragraph.innerHTML = message[counter];
             return;
         }
         return;
