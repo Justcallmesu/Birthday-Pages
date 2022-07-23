@@ -59,7 +59,7 @@ function createImages() {
         created = true;
         const images = document.createElement("img");
 
-        images.setAttribute("src", "./assets/images/images1.jpeg");
+        images.setAttribute("src", "./assets/Images/images1.jpeg");
         images.classList.add("ending-images");
 
         document.body.appendChild(images);
@@ -80,7 +80,7 @@ function createImages() {
                     }
                 }, 3000)
             }, 200);
-            images.setAttribute("src", `./assets/images/images${counter}.jpeg`);
+            images.setAttribute("src", `./assets/Images/images${counter}.jpeg`);
             counter++;
             if (counter === 12) {
                 clearInterval(interval);
