@@ -13,6 +13,7 @@ const element = {
     player: document.querySelector(".song"),
     controls: document.querySelector(".controls"),
     wholeContainer: document.querySelector(".container"),
+    endingHeader: null,
     randomPosition: null
 }
 
@@ -23,7 +24,9 @@ const eventsList = ["mouseover",
     "touchend"
 ];
 
+let interval = null;
 let counter = 0;
+let created = false;
 
 window.addEventListener("load", function () {
     element.paragraph.innerText = message[counter];
@@ -52,6 +55,45 @@ function moveButton() {
     styling.top = Math.floor(Math.random() * elementDimension.height) + 1 + "px";
 }
 
+function createImages() {
+    if (!created) {
+        created = true;
+        const images = document.createElement("img");
+        images.setAttribute("src", "./assets/images/images1.jpeg");
+        images.classList.add("ending-images");
+
+        document.body.appendChild(images);
+
+        counter = 2;
+        interval = setInterval(function () {
+            images.setAttribute("src", `./assets/images/images${counter}.jpeg`);
+            counter++;
+
+            if (counter === 12) {
+                clearInterval(interval);
+                element.endingHeader.innerText = "God Bless You"
+            }
+        }, 4000)
+    }
+}
+
+function createElement() {
+    const endingContainer = document.createElement("div");
+    const h1 = document.createElement("h1");
+
+    h1.innerText = "For You"
+    endingContainer.classList.add("ending-container");
+    endingContainer.appendChild(h1);
+    document.body.appendChild(endingContainer);
+
+    setTimeout(function () {
+        endingContainer.classList.add("fade-in");
+        element.endingHeader = h1;
+        console.log(element);
+        createImages();
+    }, 500)
+}
+
 function createEventListener() {
     for (const event of eventsList) {
         element.container.addEventListener(`${event}`, function (event) {
@@ -62,7 +104,27 @@ function createEventListener() {
     }
 }
 
-element.container.addEventListener("click", function (event) {
+function changeIcon(event) {
+    if (event.target.classList.contains("bi-play-fill")) {
+        event.target.classList.remove("bi-play-fill");
+        event.target.classList.add("bi-pause-fill");
+        element.player.pause();
+    } else {
+        event.target.classList.remove("bi-pause-fill");
+        event.target.classList.add("bi-play-fill");
+        element.player.play();
+    }
+}
+
+const selfDestruct = element.container.addEventListener("click", function (event) {
+    if (counter === 5) {
+        removeEventListener("click", element.container);
+        element.wholeContainer.classList.add("fading");
+        setTimeout(function () {
+            element.wholeContainer.remove();
+            createElement();
+        }, 1500)
+    }
     if (event.target.classList.contains("eventEmitter")) {
         if (counter < message.length - 1) {
             if (element.button.innerText === "Okayy") {
@@ -81,13 +143,6 @@ element.container.addEventListener("click", function (event) {
             element.paragraph.innerText = message[counter];
             return;
         }
-
-        if (counter === 5) {
-            element.wholeContainer.classList.add("fading");
-            setTimeout(function () {
-                element.wholeContainer.remove();
-            }, 2500)
-        }
         return;
     }
 
@@ -98,14 +153,10 @@ element.container.addEventListener("click", function (event) {
 
 })
 
-element.controls.addEventListener("click", function (event) {
-    if (event.target.classList.contains("bi-play-fill")) {
-        event.target.classList.remove("bi-play-fill");
-        event.target.classList.add("bi-pause-fill");
-        element.player.pause();
-    } else {
-        event.target.classList.remove("bi-pause-fill");
-        event.target.classList.add("bi-play-fill");
-        element.player.play();
-    }
+element.controls.addEventListener("click", changeIcon)
+
+
+element.player.addEventListener("ended", function (event) {
+    changeIcon(event);
+    event.target.currentTime = 0;
 })

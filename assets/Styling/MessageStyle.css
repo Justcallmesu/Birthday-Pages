@@ -1,3 +1,4 @@
+/* Fontface */
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 body,
@@ -12,12 +13,16 @@ html {
   font-family: Roboto, sans-serif;
 }
 
+:root {
+  --main: rgba(202, 142, 181, 0.7);
+}
+/* Main Container */
 .container {
   position: absolute;
   width: 80%;
   box-sizing: border-box;
   /* Glassmorphism */
-  background: rgba(202, 142, 181, 0.7);
+  background: var(--main);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border-radius: 10px;
   height: 30rem;
@@ -49,24 +54,7 @@ html {
   bottom: 0;
 }
 
-.controls {
-  font-size: 2rem;
-  cursor: pointer;
-  width: 2.5rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
-
-  border-radius: 20px;
-  text-align: center;
-
-  background-color: #e7e7e7;
-  z-index: 9999;
-
-  position: absolute;
-  right: 30px;
-  bottom: 20px;
-}
-
+/* Button Section */
 .button-container {
   position: absolute;
   bottom: 0;
@@ -100,6 +88,45 @@ html {
   right: 15px;
 }
 
+/* Ending Container */
+.ending-container {
+  transition: 2s all ease;
+  background: var(--main);
+  padding: 10px 20px;
+
+  opacity: 0;
+  box-sizing: border-box;
+  border-radius: 20px;
+
+  position: absolute;
+  top: 50px;
+}
+
+/* Ending Images */
+.ending-images {
+  width: 15rem;
+}
+
+/* Audio Controller */
+.controls {
+  font-size: 4rem;
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  line-height: 2.5rem;
+
+  border-radius: 20px;
+  text-align: center;
+
+  background: var(--main);
+  z-index: 9999;
+
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+}
+
+/* Pc Media Query */
 @media screen and (min-width: 992px) {
   .container {
     width: 30rem;
@@ -118,6 +145,11 @@ html {
   }
 }
 
+/* Transition Animations */
 .fading {
   opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
 }
