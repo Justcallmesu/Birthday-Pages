@@ -12,6 +12,7 @@ const element = {
     container: document.querySelector(".button-container"),
     player: document.querySelector(".song"),
     controls: document.querySelector(".controls"),
+    wholeContainer: document.querySelector(".container"),
     randomPosition: null
 }
 
@@ -64,24 +65,37 @@ function createEventListener() {
 element.container.addEventListener("click", function (event) {
     if (event.target.classList.contains("eventEmitter")) {
         if (counter < message.length - 1) {
+            if (element.button.innerText === "Okayy") {
+                element.wholeContainer.remove();
+            }
             counter++;
             if (counter === 4) {
                 element.button.innerText = "Gak usah";
                 createButton();
                 createEventListener();
             };
-
             if (counter === 5) {
                 element.randomPosition.remove();
                 element.button.innerText = "Okayy"
             }
             element.paragraph.innerText = message[counter];
+            return;
+        }
+
+        if (counter === 5) {
+            element.wholeContainer.classList.add("fading");
+            setTimeout(function () {
+                element.wholeContainer.remove();
+            }, 2500)
         }
         return;
     }
+
     if (event.target.classList.contains("randomPosition")) {
         moveButton();
+        return;
     }
+
 })
 
 element.controls.addEventListener("click", function (event) {

@@ -6,7 +6,6 @@ html {
   padding: 0;
   height: 100%;
   overflow-y: hidden;
-  background-color: #c9bbcf;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,10 +17,11 @@ html {
   width: 80%;
   box-sizing: border-box;
   /* Glassmorphism */
-  background: rgba(202, 142, 181, 0.2);
+  background: rgba(202, 142, 181, 0.7);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border-radius: 10px;
   height: 30rem;
+  transition: 2s all ease;
 }
 
 .container header {
@@ -116,4 +116,8 @@ html {
   .button.randomPosition {
     right: 50px;
   }
+}
+
+.fading {
+  opacity: 0;
 }
