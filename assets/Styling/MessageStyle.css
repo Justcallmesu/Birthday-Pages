@@ -49,6 +49,24 @@ html {
   bottom: 0;
 }
 
+.controls {
+  font-size: 2rem;
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+
+  border-radius: 20px;
+  text-align: center;
+
+  background-color: #e7e7e7;
+  z-index: 9999;
+
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+}
+
 .button-container {
   position: absolute;
   bottom: 0;
@@ -66,7 +84,7 @@ html {
   border: none;
   outline: none;
   cursor: pointer;
-  bottom: 30px;
+  bottom: 10px;
   box-shadow: 2px 0 20px 10px #c9bbcf;
 }
 
@@ -92,6 +110,10 @@ html {
   }
 
   .button.eventEmitter {
-    left: 30px;
+    left: 50px;
+  }
+
+  .button.randomPosition {
+    right: 50px;
   }
 }

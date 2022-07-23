@@ -11,6 +11,7 @@ const element = {
     button: document.querySelector(".eventEmitter"),
     container: document.querySelector(".button-container"),
     player: document.querySelector(".song"),
+    controls: document.querySelector(".controls"),
     randomPosition: null
 }
 
@@ -24,7 +25,6 @@ const eventsList = ["mouseover",
 let counter = 0;
 
 window.addEventListener("load", function () {
-    var context = new AudioContext();
     element.paragraph.innerText = message[counter];
     const promise = element.player.play();
     promise.then(function () {
@@ -81,5 +81,17 @@ element.container.addEventListener("click", function (event) {
     }
     if (event.target.classList.contains("randomPosition")) {
         moveButton();
+    }
+})
+
+element.controls.addEventListener("click", function (event) {
+    if (event.target.classList.contains("bi-play-fill")) {
+        event.target.classList.remove("bi-play-fill");
+        event.target.classList.add("bi-pause-fill");
+        element.player.pause();
+    } else {
+        event.target.classList.remove("bi-pause-fill");
+        event.target.classList.add("bi-play-fill");
+        element.player.play();
     }
 })
