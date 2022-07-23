@@ -13,7 +13,6 @@ const element = {
     player: document.querySelector(".song"),
     controls: document.querySelector(".controls"),
     wholeContainer: document.querySelector(".container"),
-    endingHeader: null,
     randomPosition: null
 }
 
@@ -59,39 +58,35 @@ function createImages() {
     if (!created) {
         created = true;
         const images = document.createElement("img");
+
         images.setAttribute("src", "./assets/images/images1.jpeg");
         images.classList.add("ending-images");
 
         document.body.appendChild(images);
+        setTimeout(function () {
+            images.classList.toggle("fade-in");
+            setTimeout(function () {
+                images.classList.toggle("fade-in");
+            }, 3000)
+        }, 200);
 
         counter = 2;
         interval = setInterval(function () {
+            setTimeout(function () {
+                images.classList.toggle("fade-in");
+                setTimeout(function () {
+                    if (counter < 12) {
+                        images.classList.toggle("fade-in");
+                    }
+                }, 3000)
+            }, 200);
             images.setAttribute("src", `./assets/images/images${counter}.jpeg`);
             counter++;
-
             if (counter === 12) {
                 clearInterval(interval);
-                element.endingHeader.innerText = "God Bless You"
             }
-        }, 4000)
+        }, 5000)
     }
-}
-
-function createElement() {
-    const endingContainer = document.createElement("div");
-    const h1 = document.createElement("h1");
-
-    h1.innerText = "For You"
-    endingContainer.classList.add("ending-container");
-    endingContainer.appendChild(h1);
-    document.body.appendChild(endingContainer);
-
-    setTimeout(function () {
-        endingContainer.classList.add("fade-in");
-        element.endingHeader = h1;
-        console.log(element);
-        createImages();
-    }, 500)
 }
 
 function createEventListener() {
@@ -118,11 +113,12 @@ function changeIcon(event) {
 
 const selfDestruct = element.container.addEventListener("click", function (event) {
     if (counter === 5) {
-        removeEventListener("click", element.container);
         element.wholeContainer.classList.add("fading");
         setTimeout(function () {
             element.wholeContainer.remove();
-            createElement();
+            setTimeout(function () {
+                createImages();
+            }, 500)
         }, 1500)
     }
     if (event.target.classList.contains("eventEmitter")) {
@@ -154,7 +150,6 @@ const selfDestruct = element.container.addEventListener("click", function (event
 })
 
 element.controls.addEventListener("click", changeIcon)
-
 
 element.player.addEventListener("ended", function (event) {
     changeIcon(event);

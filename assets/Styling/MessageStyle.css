@@ -44,6 +44,7 @@ html {
 }
 
 .container main {
+  text-align: center;
   position: relative;
   width: 100%;
   height: 85%;
@@ -80,12 +81,15 @@ html {
   background-color: rgb(228, 224, 224);
 }
 
-.button.eventEmitter {
-  left: 15px;
+.button {
+  left: 28%;
 }
 
+.button.eventEmitter {
+  bottom: 55%;
+}
 .button.randomPosition {
-  right: 15px;
+  bottom: 10%;
 }
 
 /* Ending Container */
@@ -104,7 +108,10 @@ html {
 
 /* Ending Images */
 .ending-images {
-  width: 15rem;
+  transition: 2s all ease-in-out;
+  opacity: 0;
+  width: 20rem;
+  border-radius: 20px;
 }
 
 /* Audio Controller */
@@ -133,15 +140,14 @@ html {
   }
 
   .button {
+    left: 32%;
     width: 10rem;
   }
-
   .button.eventEmitter {
-    left: 50px;
+    bottom: 50%;
   }
-
   .button.randomPosition {
-    right: 50px;
+    bottom: 10%;
   }
 }
 
