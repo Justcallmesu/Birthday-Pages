@@ -1,5 +1,5 @@
 /* Fontface */
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 body,
 html {
@@ -10,11 +10,11 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Roboto, sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 :root {
-  --main: rgba(202, 142, 181, 0.7);
+  --main: #ca4e796b;
 }
 /* Main Container */
 .container {
@@ -50,11 +50,26 @@ html {
   height: 85%;
   padding: 30px;
   box-sizing: border-box;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   bottom: 0;
 }
+/* Images in container */
+.logo {
+  position: absolute;
+  width: 5rem;
+  bottom: 0;
+  right: -30px;
+  transform: rotate(-20deg);
+}
 
+.chibi {
+  position: absolute;
+  width: 30rem;
+
+  top: -120px;
+  left: -80px;
+}
 /* Button Section */
 .button-container {
   position: absolute;
@@ -86,10 +101,10 @@ html {
 }
 
 .button.eventEmitter {
-  bottom: 55%;
+  bottom: 40%;
 }
 .button.randomPosition {
-  bottom: 10%;
+  bottom: 0%;
 }
 
 /* Ending Container */
@@ -137,6 +152,12 @@ html {
 @media screen and (min-width: 992px) {
   .container {
     width: 30rem;
+    padding-top: 60px;
+  }
+
+  .chibi {
+    width: 40rem;
+    top: -110px;
   }
 
   .button {
