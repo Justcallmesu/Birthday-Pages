@@ -148,6 +148,11 @@ html {
   bottom: 20px;
 }
 
+.dummy {
+  visibility: hidden;
+  position: absolute;
+}
+
 /* Pc Media Query */
 @media screen and (min-width: 992px) {
   .container {
