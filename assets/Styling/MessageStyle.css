@@ -10,6 +10,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   font-family: Poppins, sans-serif;
 }
 
@@ -66,7 +67,6 @@ html {
 .chibi {
   position: absolute;
   width: 30rem;
-
   top: -120px;
   left: -80px;
 }
@@ -101,10 +101,10 @@ html {
 }
 
 .button.eventEmitter {
-  bottom: 40%;
+  bottom: 5%;
 }
 .button.randomPosition {
-  bottom: 0%;
+  bottom: -30%;
 }
 
 /* Ending Container */
@@ -153,6 +153,21 @@ html {
   position: absolute;
 }
 
+@media screen and (max-width: 600px) {
+  .container {
+    transform: scale(0.8);
+  }
+
+  .chibi {
+    left: -100px;
+  }
+
+  .logo {
+    width: 4rem;
+    left: -20px;
+    transform: rotate(20deg);
+  }
+}
 /* Pc Media Query */
 @media screen and (min-width: 992px) {
   .container {
