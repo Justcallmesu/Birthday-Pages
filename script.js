@@ -80,7 +80,7 @@ function createImages() {
             setTimeout(function () {
                 images.classList.toggle("fade-in");
                 setTimeout(function () {
-                    if (counter < 12) {
+                    if (counter <= 12) {
                         images.classList.toggle("fade-in");
                     }
                 }, 3000)
