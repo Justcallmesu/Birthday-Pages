@@ -1,5 +1,5 @@
 const message = [
-    "生日快乐, 姐姐 😜祝您福如东海，寿比南山.(video ini ada lagunya tolong di - play dulu sampe nyala) ",
+    "生日快乐, 姐姐 😜<br/>祝您福如东海，寿比南山.<br/><br/>(Ucapan ini ada lagunya,<br/>Tolong diplay dulu.<br/>Caranya Klik tombol play dibawah 2x) ",
     "喝大量的水.<br/>别忘了微笑.",
     'Kalau lg kerja sering jalan", jangan duduk terus.<br/>Ini ucapannya setengah mandarin setengah indo soalnya gua nggk kursus.',
     "Oh dan yang paling penting, harus banyak nongki sama temen biar happy hihi",
@@ -109,16 +109,8 @@ function createButtonShorthand(counter) {
     createEventListener();
 }
 
-function changeIcon(event) {
-    if (event.target.classList.contains("bi-play-fill")) {
-        event.target.classList.remove("bi-play-fill");
-        event.target.classList.add("bi-pause-fill");
-        element.player.pause();
-    } else {
-        event.target.classList.remove("bi-pause-fill");
-        event.target.classList.add("bi-play-fill");
-        element.player.play();
-    }
+function player() {
+    element.player.play();
 }
 
 const selfDestruct = element.container.addEventListener("click", function (event) {
@@ -133,21 +125,24 @@ const selfDestruct = element.container.addEventListener("click", function (event
     }
     if (event.target.classList.contains("eventEmitter")) {
         if (counter < message.length - 1) {
-            if (element.button.innerText === "Okayy") {
+            if (element.button.innerHTML === "Okayy") {
                 element.wholeContainer.remove();
             }
             counter++;
+            if (counter === 1) {
+                document.querySelector(".temporary").remove();
+            }
             if (counter === 4) {
-                element.button.innerText = "Iya";
+                element.button.innerHTML = "Iya";
                 createButtonShorthand(counter)
             };
             if (counter === 5) {
                 element.randomPosition.remove();
-                element.button.innerText = "Resto Mahal"
+                element.button.innerHTML = "Resto Mahal"
                 createButtonShorthand(counter);
             }
             if (counter === 6) {
-                element.button.innerText = "Okayy"
+                element.button.innerHTML = "Okayy"
                 element.randomPosition.remove();
             }
             element.paragraph.innerHTML = message[counter];
@@ -163,7 +158,7 @@ const selfDestruct = element.container.addEventListener("click", function (event
 
 })
 
-element.controls.addEventListener("click", changeIcon)
+element.controls.addEventListener("click", player);
 
 element.player.addEventListener("ended", function (event) {
     changeIcon(event);
