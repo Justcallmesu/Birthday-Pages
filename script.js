@@ -87,7 +87,7 @@ function createImages() {
             }, 200);
             images.setAttribute("src", `./assets/Images/img${counter}.jpeg`);
             counter++;
-            if (counter === 12) {
+            if (counter === 13) {
                 clearInterval(interval);
             }
         }, 5000)
