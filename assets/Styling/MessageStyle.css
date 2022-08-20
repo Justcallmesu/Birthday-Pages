@@ -15,7 +15,7 @@ html {
 }
 
 :root {
-  --main: #ca4e796b;
+  --main: #7fb77e;
 }
 /* Main Container */
 .container {
@@ -89,7 +89,7 @@ html {
   outline: none;
   cursor: pointer;
   bottom: 10px;
-  box-shadow: 2px 0 20px 10px #c9bbcf;
+  box-shadow: 2px 0 20px 10px #7fb77e;
 }
 
 .button:hover {

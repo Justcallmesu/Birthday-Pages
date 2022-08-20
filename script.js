@@ -1,10 +1,11 @@
 const message = [
-    "Halooo Sarah Michelle <br/> (HRD tercinta GMM) <br/> 25 Juli 2022",
-    "Happy Birthday ya, cieee tua🥺",
-    "Semoga jadi pribadi yg lebih baik <br/> lebih sabar <br/> lebih teliti <br/> lebih teratur <br/> yang paling penting lebih bersih lagi hehe",
-    "Jangan keseringan lupa <br/>jangan suka menghayal jadi istri jungkook <br/> jangan kebanyakan ngegym nanti klo jadi cantik lalu punya pacar jd susah diajak nongki 😭",
-    "Hmmm btw mau kado sama kue apa?",
-    "Oh gak usah, yauda gpp. <br/> Ditunggu ya traktirannya <br/> Jangan Lupa Chumchurumnya HAHAHA 🥰"
+    "生日快乐, 姐姐 😜祝您福如东海，寿比南山.(video ini ada lagunya tolong di - play dulu sampe nyala) ",
+    "喝大量的水.<br/>别忘了微笑.",
+    'Kalau lg kerja sering jalan", jangan duduk terus.<br/>Ini ucapannya setengah mandarin setengah indo soalnya gua nggk kursus.',
+    "Oh dan yang paling penting, harus banyak nongki sama temen biar happy hihi",
+    "好朋友就像星星。你不一定每天都能看见他们，但你知道，他们会一直在那里.<br/>Seneng kan punya temen kyk kita ?",
+    "Mau traktir kita dimana?",
+    "从来没有人因为给予而变穷的.<br/>成为更好的领导者"
 ];
 const element = {
     paragraph: document.querySelector(".Content"),
@@ -35,9 +36,13 @@ window.addEventListener("load", function () {
     });
 })
 
-function createButton() {
+function createButton(coounter) {
     const button = document.createElement("button");
-    button.innerText = "Apa Aja Boleh";
+    if (counter === 4) {
+        button.innerText = "Biasa Aja";
+    } else {
+        button.innerText = "Pinggiran";
+    }
     button.classList.add("button", "randomPosition");
     element.container.appendChild(button);
     element.randomPosition = button;
@@ -59,7 +64,7 @@ function createImages() {
         created = true;
         const images = document.createElement("img");
 
-        images.setAttribute("src", "./assets/Images/images1.jpeg");
+        images.setAttribute("src", "./assets/Images/img1.jpeg");
         images.classList.add("ending-images");
 
         document.body.appendChild(images);
@@ -80,7 +85,7 @@ function createImages() {
                     }
                 }, 3000)
             }, 200);
-            images.setAttribute("src", `./assets/Images/images${counter}.jpeg`);
+            images.setAttribute("src", `./assets/Images/img${counter}.jpeg`);
             counter++;
             if (counter === 12) {
                 clearInterval(interval);
@@ -99,6 +104,11 @@ function createEventListener() {
     }
 }
 
+function createButtonShorthand(counter) {
+    createButton(counter);
+    createEventListener();
+}
+
 function changeIcon(event) {
     if (event.target.classList.contains("bi-play-fill")) {
         event.target.classList.remove("bi-play-fill");
@@ -112,7 +122,7 @@ function changeIcon(event) {
 }
 
 const selfDestruct = element.container.addEventListener("click", function (event) {
-    if (counter === 5) {
+    if (counter === 6) {
         element.wholeContainer.classList.add("fading");
         setTimeout(function () {
             element.wholeContainer.remove();
@@ -128,13 +138,17 @@ const selfDestruct = element.container.addEventListener("click", function (event
             }
             counter++;
             if (counter === 4) {
-                element.button.innerText = "Gak usah";
-                createButton();
-                createEventListener();
+                element.button.innerText = "Iya";
+                createButtonShorthand(counter)
             };
             if (counter === 5) {
                 element.randomPosition.remove();
+                element.button.innerText = "Resto Mahal"
+                createButtonShorthand(counter);
+            }
+            if (counter === 6) {
                 element.button.innerText = "Okayy"
+                element.randomPosition.remove();
             }
             element.paragraph.innerHTML = message[counter];
             return;
